@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Produto</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=Figtree:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#101c4a;--sun:#ffd23f;--hot:#ff4f2e;--ok:#12a150;--soft:#eef1fa;--line:#d9dff2;--mute:#4a557f;
+--display:"Bricolage Grotesque","Arial Black",Arial,sans-serif;--body:"Figtree",system-ui,-apple-system,"Segoe UI",Arial,sans-serif}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--body);color:var(--ink);background:#fff;line-height:1.55;font-size:17px;padding-bottom:84px}
+img{max-width:100%;display:block}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+h1,h2,h3{font-family:var(--display);line-height:1.08;letter-spacing:-.02em}
+h2{font-size:clamp(28px,5vw,42px);font-weight:800;margin-bottom:12px}
+section{padding:64px 0}
+.bar{background:var(--ink);color:#fff;text-align:center;font-weight:700;font-size:14px;padding:9px 12px}
+.hero{background:var(--sun);padding:44px 0 56px}
+.hero .wrap{display:grid;gap:32px;align-items:center}
+@media(min-width:820px){.hero .wrap{grid-template-columns:1.05fr .95fr}}
+.hero h1{font-size:clamp(38px,8vw,68px);font-weight:800}
+.hero p.sub{font-size:19px;margin:16px 0 24px;max-width:34em}
+.price{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:20px}
+.price .now{font-family:var(--display);font-size:52px;font-weight:800}
+.price .old{text-decoration:line-through;color:var(--mute);font-size:21px}
+.price .tag{background:var(--ink);color:var(--sun);font-weight:700;padding:3px 12px;border-radius:99px;font-size:14px}
+.btn{display:inline-block;background:var(--hot);color:#fff;font:700 19px var(--body);text-decoration:none;border:0;border-radius:14px;padding:17px 30px;cursor:pointer;box-shadow:0 5px 0 #b82f14;transition:transform .12s,box-shadow .12s}
+.btn:hover{transform:translateY(2px);box-shadow:0 3px 0 #b82f14}
+.btn:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+.btn.full{width:100%;text-align:center}
+.safe{margin-top:14px;font-weight:600;font-size:15px}
+.shot{background:#fff;border-radius:28px;aspect-ratio:1;display:grid;place-items:center;overflow:hidden;border:4px solid var(--ink);transform:rotate(2deg)}
+.shot img{width:100%;height:100%;object-fit:cover}
+.shot .ph{font-size:120px}
+.benefits{display:grid;gap:16px;margin-top:28px}
+@media(min-width:700px){.benefits{grid-template-columns:repeat(2,1fr)}}
+.benefit{background:var(--soft);border-radius:20px;padding:24px;display:flex;gap:16px}
+.benefit .ic{font-size:34px;line-height:1}
+.benefit h3{font-size:22px;margin-bottom:4px}
+.benefit p{color:var(--mute)}
+.cod{background:var(--ink);color:#fff}
+.cod h2{color:var(--sun)}
+.steps{display:grid;gap:16px;margin-top:28px;counter-reset:s}
+@media(min-width:700px){.steps{grid-template-columns:repeat(3,1fr)}}
+.step{border:2px solid #34437f;border-radius:20px;padding:24px;counter-increment:s}
+.step::before{content:counter(s);display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:var(--sun);color:var(--ink);font:800 20px var(--display);margin-bottom:12px}
+.step h3{font-size:21px;margin-bottom:4px}
+.step p{color:#c4cdf0}
+.quotes{display:grid;gap:16px;margin-top:28px}
+@media(min-width:800px){.quotes{grid-template-columns:repeat(3,1fr)}}
+.quote{border:2px solid var(--line);border-radius:20px;padding:22px}
+.quote .st{color:#f5a300;letter-spacing:2px;margin-bottom:8px}
+.quote b{display:block;margin-top:12px}
+details{border-bottom:2px solid var(--line);padding:18px 0}
+summary{font-weight:700;font-size:18px;cursor:pointer}
+details p{margin-top:8px;color:var(--mute)}
+.order{background:var(--soft)}
+.card{background:#fff;border:3px solid var(--ink);border-radius:24px;padding:28px;max-width:560px;margin:28px auto 0}
+.card .sum{display:flex;justify-content:space-between;align-items:center;gap:12px;padding-bottom:16px;margin-bottom:16px;border-bottom:2px dashed var(--line);font-weight:700}
+label{display:block;font-weight:700;margin:14px 0 6px;font-size:15px}
+input,select{width:100%;font:inherit;padding:14px;border:2px solid var(--line);border-radius:12px;background:#fff}
+.total{display:flex;justify-content:space-between;font:800 24px var(--display);margin:20px 0 16px}
+.msg{margin-top:14px;font-weight:700;text-align:center}
+.msg.ok{color:var(--ok)}.msg.err{color:var(--hot)}
+footer{padding:28px 0;text-align:center;color:var(--mute);font-size:14px}
+.sticky{position:fixed;left:0;right:0;bottom:0;background:#fff;border-top:3px solid var(--ink);padding:10px 16px;display:flex;align-items:center;justify-content:space-between;gap:12px;z-index:9}
+.sticky .p{font:800 22px var(--display)}
+.sticky .btn{padding:12px 20px;font-size:16px}
+[hidden]{display:none!important}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<div class="bar" id="topbar"></div>
+
+<header class="hero">
+  <div class="wrap">
+    <div>
+      <h1 id="headline"></h1>
+      <p class="sub" id="subheadline"></p>
+      <div class="price"><span class="now" id="price"></span><span class="old" id="oldPrice"></span><span class="tag" id="discount"></span></div>
+      <a class="btn" href="#pedido" id="ctaHero"></a>
+      <p class="safe" id="safeLine"></p>
+    </div>
+    <div class="shot" id="shot"></div>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <h2 id="benefitsTitle"></h2>
+    <div class="benefits" id="benefits"></div>
+  </div>
+</section>
+
+<section class="cod">
+  <div class="wrap">
+    <h2>Pague só quando receber</h2>
+    <p style="max-width:36em;color:#c4cdf0">Sem cartão, sem Pix adiantado, sem risco. Você confere o produto na sua mão e só então paga.</p>
+    <div class="steps">
+      <div class="step"><h3>Faça o pedido</h3><p>Preencha nome, telefone e endereço. Leva menos de 1 minuto.</p></div>
+      <div class="step"><h3>Receba em casa</h3><p>Nosso entregador leva o produto até você e avisa antes de chegar.</p></div>
+      <div class="step"><h3>Pague na entrega</h3><p>Confira tudo e pague em dinheiro ou na máquina, na porta de casa.</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Quem comprou, aprovou</h2>
+    <div class="quotes" id="quotes"></div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap" style="max-width:760px">
+    <h2>Perguntas frequentes</h2>
+    <div id="faq"></div>
+  </div>
+</section>
+
+<section class="order" id="pedido">
+  <div class="wrap">
+    <h2 style="text-align:center" id="orderTitle"></h2>
+    <p style="text-align:center;color:var(--mute)">Preencha os dados e pague apenas na entrega.</p>
+    <div class="card">
+      <div class="sum"><span id="sumName"></span><span id="sumPrice"></span></div>
+      <div id="orderForm" role="group" aria-label="Formulário de pedido">
+        <label for="f_nome">Nome completo</label>
+        <input id="f_nome" autocomplete="name" placeholder="Seu nome">
+        <label for="f_tel">WhatsApp / telefone</label>
+        <input id="f_tel" type="tel" autocomplete="tel" inputmode="tel" placeholder="(21) 90000-0000">
+        <label for="f_end">Endereço completo</label>
+        <input id="f_end" autocomplete="street-address" placeholder="Rua, número, bairro e complemento">
+        <label for="f_cidade">Cidade / UF</label>
+        <input id="f_cidade" autocomplete="address-level2" placeholder="Rio de Janeiro / RJ">
+        <label for="f_qtd">Quantidade</label>
+        <select id="f_qtd"></select>
+        <div class="total"><span>Total a pagar na entrega</span><span id="total"></span></div>
+        <button class="btn full" id="submitBtn" type="button"></button>
+        <p class="msg" id="msg" role="status"></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer><div class="wrap" id="footerText"></div></footer>
+
+<div class="sticky" id="sticky">
+  <span class="p" id="stickyPrice"></span>
+  <a class="btn" href="#pedido" id="ctaSticky"></a>
+</div>
+
+<script>
+/* =====================================================================
+   EDITE SÓ AQUI. Para trocar de produto, mude os textos, preço e imagem.
+   Todo o resto da página se atualiza sozinho.
+   ===================================================================== */
+const CONFIG = {
+  // --- Produto ---
+  nome: "Mini Liquidificador Portátil",
+  titulo: "Smoothie fresquinho em 30 segundos, onde você estiver",
+  subtitulo: "Recarregável por USB, cabe na bolsa e lava sozinho. Chega na sua casa e você só paga quando receber.",
+  imagem: "",            // URL da foto do produto (ex.: "/produto.jpg"). Vazio = mostra o emoji abaixo.
+  emoji: "🥤",
+
+  // --- Preço (use ponto nos centavos) ---
+  preco: 89.90,
+  precoAntigo: 149.90,   // coloque 0 para esconder o "de/por"
+  moeda: "R$",
+
+  // --- Textos de venda ---
+  faixaTopo: "🚚 Frete grátis para todo o Brasil • Pague só na entrega",
+  botao: "Quero o meu agora",
+  botaoPedido: "Confirmar pedido",
+  tituloPedido: "Garanta o seu antes que acabe",
+  linhaSeguranca: "✅ Sem pagar nada agora. Você paga ao receber.",
+  tituloBeneficios: "Por que todo mundo está pedindo",
+  beneficios: [
+    { icone: "⚡", titulo: "Pronto em 30 segundos", texto: "Frutas, gelo e leite viram bebida cremosa num instante." },
+    { icone: "🔋", titulo: "Recarga por USB", texto: "Uma carga faz vários copos. Leve para a academia ou o trabalho." },
+    { icone: "🧼", titulo: "Lava sozinho", texto: "Água e uma gota de detergente, ligue e pronto. Sem sujeira." },
+    { icone: "🎒", titulo: "Cabe em qualquer bolsa", texto: "Pequeno, leve e com tampa que não vaza." }
+  ],
+  depoimentos: [
+    { nome: "Camila R.", cidade: "Niterói, RJ", texto: "Chegou rápido e paguei só na porta. Uso todo dia de manhã!" },
+    { nome: "Rafael M.", cidade: "São Paulo, SP", texto: "Achei que era brinquedo, mas bate bem forte. Super recomendo." },
+    { nome: "Juliana S.", cidade: "Belo Horizonte, MG", texto: "Perfeito pra levar no trabalho. Já comprei outro de presente." }
+  ],
+  perguntas: [
+    { p: "Como funciona o pagamento?", r: "Você faz o pedido sem pagar nada. Quando o produto chegar, você confere e paga ao entregador." },
+    { p: "Quanto tempo leva para chegar?", r: "Entre 3 e 7 dias úteis, dependendo da sua região. Avisamos você pelo WhatsApp." },
+    { p: "E se eu não gostar?", r: "Se o produto não corresponder ao que foi anunciado, você não precisa aceitar a entrega." },
+    { p: "Tem garantia?", r: "Sim, 30 dias contra defeito de fabricação. É só falar com a gente pelo WhatsApp." }
+  ],
+  maxQuantidade: 5,
+  rodape: "© 2026 Sua Loja. Todos os direitos reservados.",
+
+  // --- Como receber os pedidos ---
+  modoPedido: "whatsapp",           // "whatsapp" ou "webhook"
+  whatsapp: "5521900000000",        // DDI + DDD + número, só dígitos
+  webhookUrl: ""                    // para "webhook": URL que recebe o pedido em JSON (Formspree, Make, Zapier, Google Apps Script...)
+};
+/* ===================================================================== */
+
+const $ = id => document.getElementById(id);
+const fmt = v => CONFIG.moeda + " " + v.toFixed(2).replace(".", ",");
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+document.title = CONFIG.nome + " | Pague na entrega";
+$("topbar").textContent = CONFIG.faixaTopo;
+$("headline").textContent = CONFIG.titulo;
+$("subheadline").textContent = CONFIG.subtitulo;
+$("price").textContent = fmt(CONFIG.preco);
+if (CONFIG.precoAntigo > CONFIG.preco) {
+  $("oldPrice").textContent = fmt(CONFIG.precoAntigo);
+  $("discount").textContent = Math.round((1 - CONFIG.preco / CONFIG.precoAntigo) * 100) + "% OFF";
+} else { $("oldPrice").hidden = true; $("discount").hidden = true; }
+["ctaHero","ctaSticky"].forEach(i => $(i).textContent = CONFIG.botao);
+$("safeLine").textContent = CONFIG.linhaSeguranca;
+$("shot").innerHTML = CONFIG.imagem
+  ? '<img src="' + esc(CONFIG.imagem) + '" alt="' + esc(CONFIG.nome) + '">'
+  : '<span class="ph" aria-hidden="true">' + CONFIG.emoji + '</span>';
+$("benefitsTitle").textContent = CONFIG.tituloBeneficios;
+$("benefits").innerHTML = CONFIG.beneficios.map(b =>
+  '<div class="benefit"><div class="ic" aria-hidden="true">' + b.icone + '</div><div><h3>' + esc(b.titulo) + '</h3><p>' + esc(b.texto) + '</p></div></div>').join("");
+$("quotes").innerHTML = CONFIG.depoimentos.map(d =>
+  '<div class="quote"><div class="st" aria-label="5 estrelas">★★★★★</div><p>“' + esc(d.texto) + '”</p><b>' + esc(d.nome) + ' · ' + esc(d.cidade) + '</b></div>').join("");
+$("faq").innerHTML = CONFIG.perguntas.map(q =>
+  '<details><summary>' + esc(q.p) + '</summary><p>' + esc(q.r) + '</p></details>').join("");
+$("orderTitle").textContent = CONFIG.tituloPedido;
+$("sumName").textContent = CONFIG.nome;
+$("sumPrice").textContent = fmt(CONFIG.preco);
+$("stickyPrice").textContent = fmt(CONFIG.preco);
+$("submitBtn").textContent = CONFIG.botaoPedido;
+$("footerText").textContent = CONFIG.rodape;
+
+const qtd = $("f_qtd");
+for (let i = 1; i <= CONFIG.maxQuantidade; i++) qtd.add(new Option(i + (i === 1 ? " unidade" : " unidades"), i));
+const updateTotal = () => $("total").textContent = fmt(CONFIG.preco * Number(qtd.value));
+qtd.addEventListener("change", updateTotal); updateTotal();
+
+// Esconde a barra fixa quando o formulário está na tela
+new IntersectionObserver(e => $("sticky").hidden = e[0].isIntersecting).observe($("pedido"));
+
+const msg = (t, c) => { $("msg").textContent = t; $("msg").className = "msg " + (c || ""); };
+
+$("submitBtn").addEventListener("click", async () => {
+  const d = { nome: $("f_nome").value.trim(), telefone: $("f_tel").value.trim(), endereco: $("f_end").value.trim(), cidade: $("f_cidade").value.trim(), quantidade: Number(qtd.value) };
+  if (!d.nome || d.telefone.replace(/\D/g, "").length < 10 || !d.endereco || !d.cidade) { msg("Preencha todos os campos com seus dados corretos.", "err"); return; }
+  d.produto = CONFIG.nome; d.total = fmt(CONFIG.preco * d.quantidade);
+
+  if (CONFIG.modoPedido === "webhook" && CONFIG.webhookUrl) {
+    $("submitBtn").disabled = true; msg("Enviando pedido…");
+    try {
+      const r = await fetch(CONFIG.webhookUrl, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(d) });
+      if (!r.ok) throw new Error();
+      msg("Pedido enviado! Vamos chamar você no WhatsApp para confirmar.", "ok");
+      ["f_nome","f_tel","f_end","f_cidade"].forEach(i => $(i).value = "");
+    } catch (e) { msg("Não foi possível enviar. Tente de novo em instantes.", "err"); }
+    $("submitBtn").disabled = false;
+  } else {
+    const texto = "Olá! Quero fazer um pedido (pagamento na entrega):\n\n" +
+      "Produto: " + d.produto + "\nQuantidade: " + d.quantidade + "\nTotal: " + d.total + "\n\n" +
+      "Nome: " + d.nome + "\nTelefone: " + d.telefone + "\nEndereço: " + d.endereco + "\nCidade: " + d.cidade;
+    window.location.href = "https://wa.me/" + CONFIG.whatsapp + "?text=" + encodeURIComponent(texto);
+  }
+});
+</script>
+</body>
+</html>
